@@ -1,0 +1,236 @@
+<h3>----------{{testtitle}}--------</h3>
+<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+  <ngb-panel title="&#9733; Simple &#9733;">
+    <ng-template ngbPanelContent>
+      <button (click)="getName(true,38,'parameter')">Click Me</button>
+      <br>
+      <button (click)="getData(test.value)">Click Me</button>
+      <br>
+      <input (keyup)="getData(test.value)" type="text" placeholder="key up" #test>
+      <br>
+      {{testValue()}}
+      <br>
+      <input (keydown)="getData(test1.value)" type="text" placeholder="key press" #test1>
+      <br>
+      <input (blur)="getData(test2.value)" type="text" placeholder="blur" #test2>
+      <br>
+      <input (input)="getData(test3.value)" type="text" placeholder="input" #test3>
+
+    </ng-template>
+  </ngb-panel>
+  <ngb-panel>
+    <ng-template ngbPanelTitle>
+      <span>&#9733; Calss - 01-02-2022(Get input Value) &#9733;</span>
+    </ng-template>
+    <ng-template ngbPanelContent>
+      <input type="text" (change)="getInputValue(name.value)" #name placeholder="Enter Name" name="username">
+      <br>
+      <span class="heading">Box input value is here : {{displayVal}}</span>
+      <br>
+      <button (click)="getInputValue(name.value)">Click Me</button>
+      <button (click)="getInputValue(name.name)">Click Me</button>
+      <br>
+      <h3>Make Counter</h3>
+      <button (click)="counter('minus')">--</button>
+      <p>{{incrise}}</p>
+      <button (click)="counter('add')">++</button>
+    </ng-template>
+  </ngb-panel>
+  <ngb-panel title="&#9733; Calss - 02-02-2022(property binding) &#9733;">
+    <ng-template ngbPanelContent>
+      <input type="text" name="user-name" disabled={{disable}} value="{{nameI}}">
+      <br>
+      <input type="text" name="user-name1" [disabled]=disable [value]=nameI>
+    </ng-template>
+  </ngb-panel>
+  <ngb-panel title="&#9733; if else &#9733;">
+    <ng-template ngbPanelContent>
+      <h1 *ngIf="show=='yes'; then ifBlock else elseBlock"></h1>
+      <ng-template #ifBlock>
+        <h1>if Condition</h1>
+      </ng-template>
+      <ng-template #elseBlock>
+        <h1>Else Condition</h1>
+      </ng-template>
+    </ng-template>
+  </ngb-panel>
+  <ngb-panel title="&#9733; if else and elseif &#9733;">
+    <ng-template ngbPanelContent>
+      <ng-template [ngIf]="color==='red'">
+        <h1 style="color: red;">red color</h1>
+      </ng-template>
+      <ng-template [ngIf]="color==='green'">
+        <h1 style="color: rgb(7, 165, 46);">green color</h1>
+      </ng-template>
+      <ng-template [ngIf]="color==='blue'">
+        <h1 style="color: rgb(35, 14, 219);">blue color</h1>
+      </ng-template>
+    </ng-template>
+  </ngb-panel> 
+  <ngb-panel title="&#9733; Switch case &#9733;">
+    <ng-template ngbPanelContent>
+      <div [ngSwitch]="color">
+        <div style="color: rgb(252, 6, 6);" *ngSwitchCase="'red'">
+          <h3>output</h3>
+        </div>
+        <div style="color: rgb(14, 230, 14);" *ngSwitchCase="'green'">
+          <h3>output</h3>
+        </div>
+        <div style="color: rgb(35, 14, 219);" *ngSwitchCase="'blue'">
+          <h3>output</h3>
+        </div>
+        <div style="color: rgb(243, 0, 190);" *ngSwitchCase="'pink'">
+          <h3>output</h3>
+        </div>
+        <div style="color: rgb(230, 255, 4);" *ngSwitchCase="'yellow'">
+          <h3>output</h3>
+        </div>
+        <div *ngSwitchDefault>
+          <h3>output</h3>
+        </div>
+      </div>
+    </ng-template>
+  </ngb-panel>
+</ngb-accordion>
+
+<h1>Calss - 03-02-2022(For loop)</h1>
+<h1>Index Array</h1>
+<h3 *ngFor="let item of user">{{item}}</h3>
+<h1>Associative Array</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email Id</th>
+      <th>Phone</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let newitem of userDetails">
+      <td>{{newitem.name}}</td>
+      <td>{{newitem.email}}</td>
+      <td>{{newitem.phone}}</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<h1>Nested Loop or multidimensional Array</h1>
+<ul *ngFor="let nitem of newArray">
+  <li>Name : {{nitem.name}}</li>
+  <li>Phone : {{nitem.phone}}</li>
+  <li>Social Account</li>
+  <ul *ngFor="let saccount of nitem.socialAcc">
+    <li>{{saccount}}</li>
+  </ul>
+</ul>
+<br>
+<h1>Style Binding</h1>
+<h3 [style.color]="color1" [style.backgroundColor]="bgcolor">Demo</h3>
+<button (click)="updateColor()">Update Color</button>
+<br>
+<h1>Calss - 04-02-2022(Angular Form)</h1>
+<form action="" #basicform="ngForm" (ngSubmit)="getFormData(basicform)">
+  <input ngModel type="text" name="user" placeholder="Enter User Name">
+  <br /> <br />
+  <input ngModel type="email" name="email" placeholder="Enter Email Id">
+  <br /> <br />
+  <input ngModel type="password" name="password" placeholder="Enter User Password">
+  <br /> <br />
+  <button>Register</button>
+</form>
+<ul>
+  <li>{{formData.user}}</li>
+  <li>{{formData.email}}</li>
+  <li>{{formData.password}}</li>
+</ul>
+<br>
+<h1>Calss - 05-02-2022(Toggle)</h1>
+<br>
+<button (click)="toogle()">Toggle</button>
+<h1 *ngIf="display">Heading</h1>
+
+<h1>Calss - 06-02-2022(Material UI)</h1>
+https://material.angular.io/
+<br>
+<p>
+  Button with a badge on the left
+  <button mat-raised-button color="primary" matBadge="8" matBadgePosition="before" matBadgeColor="accent">
+    Action
+  </button>
+</p>
+<br>
+<mat-slider min="1" max="100" step="1" value="50"></mat-slider>
+<br>
+<section>
+  <div class="example-label">Raised</div>
+  <div class="example-button-row">
+    <button mat-raised-button>Basic</button>
+    <button mat-raised-button color="primary">Primary</button>
+    <button mat-raised-button color="accent">Accent</button>
+    <button mat-raised-button color="warn">Warn</button>
+    <button mat-raised-button disabled>Disabled</button>
+    <a mat-raised-button href="https://www.google.com/" target="_blank">Link</a>
+  </div>
+</section>
+<br>
+<h1>Make Todo List</h1>
+<br>
+<form class="example-form">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Enter New Task</mat-label>
+    <input type="text" matInput placeholder="Enter New" #task>
+  </mat-form-field>
+  <br><br>
+  <button (click)="addTask(task.value)" mat-raised-button color="accent">Add</button>
+</form>
+<br>
+<ul *ngFor="let item of list">
+  <li>{{item.name}} <button (click)="removeId(item.id)" mat-raised-button color="warn"><i class="fa fa-times"
+        aria-hidden="true"></i></button></li>
+</ul>
+<br>
+<h1>Calss - 07-02-2022(Two Way Binding)</h1>
+<br>
+<input type="text" placeholder="Enter New" [(ngModel)]="binding_name">
+<h3>{{binding_name}}</h3>
+<br>
+<h1>Calss - 08-02-2022(Template reference variable)</h1>
+<br>
+<input type="text" name="inputBox" placeholder="Variable" #inputBox>
+<button (click)="getvar(inputBox)">Call Function</button>
+<br>
+<h1>basic of TS(TypeScript) for angular</h1>
+<br>
+<h1>Pipes In Angular</h1>
+<br>
+<h3>{{pipeDemo | uppercase}}</h3>
+<h3>{{pipeDemo | lowercase}}</h3>
+<h3>{{pipeDemo1 | date}}</h3>
+<h3>{{pipeDemo1 | date:'fullDate'}}</h3>
+<h3>{{pipeDemo1 | date:'M/d/yy'}}</h3>
+<h3>{{capString(pipeDemo)}}</h3>
+<br>
+<h1>Calss - 09-02-2022(Advance Pipes)</h1>
+<br>
+<h3>{{pipeDemo | uppercase | slice: 3 : 6}}</h3>
+<br>
+<h3>{{userJ | json | uppercase}}</h3>
+<br>
+<h3>{{0012000.3000 | number:'2.2-3'}}</h3>
+<br>
+<h3>{{2.3 | number:'3.3-5'}}</h3>
+<br>
+<h3>{{20 | currency:'INR'}}</h3>
+<h3>{{"hello world" | titlecase }}</h3>
+<br>
+<h1>Custom Pipes</h1>
+<br>
+{{20 | usdInr : 74}}
+<br>
+<h1>Forms Introduction</h1>
+<br>
+<ul>
+  <li>2 types of form in angular</li>
+  <li>Template-driven form</li>
+  <li>Reactive Form</li>
+</ul>

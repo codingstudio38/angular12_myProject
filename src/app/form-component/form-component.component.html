@@ -1,0 +1,54 @@
+<h1>Template Driven Form</h1>
+<form #loginForm="ngForm" (ngSubmit)="userLogin(loginForm)">
+  <input type="text" placeholder="enter name" name="name" id="name" ngModel>
+  <br> <br>
+  <input type="password" placeholder="enter password" name="password" id="password" ngModel>
+  <br> <br>
+  <button>Login</button> 
+</form>
+
+<h1>class-11-02-2022(Reactive Form In Angular)</h1>
+<br>
+<form class="reactiveForm" [formGroup]="reactiveForm" (ngSubmit)="reactiveF()">
+  <input type="text" placeholder="enter name" name="user" id="user" formControlName="user">
+  <span *ngIf="user && user.invalid && user.touched">This field is not valid</span>
+  <br> <br>
+ 
+  <input type="text" placeholder="enter email" name="email" id="email" formControlName="email">
+  <span *ngIf="email && email.invalid && email.touched">This field is not valid</span>
+  <br> <br>
+  <input type="text" placeholder="enter phone" name="phone" id="phone" formControlName="phone">
+  <span *ngIf="phone && phone.invalid && phone.touched">This field is not valid</span>
+  <br> <br>
+  <input type="password" placeholder="enter password" name="userpass" id="userpass" formControlName="userpass">
+  <span *ngIf="userpass && userpass.invalid && userpass.touched">This field is not valid</span>
+  <br> <br>
+  <select name="demoselect" id="demoselect" formControlName="demoselect">
+    <option value="">Select opt</option>
+    <option value="a">A</option>
+    <option value="b">B</option>
+  </select>
+  <span *ngIf="demoselect && demoselect.invalid && demoselect.touched">This field is not valid</span>
+  <br> <br>
+  <button [disabled]="reactiveForm.invalid">Login</button>
+</form>
+<h1 *ngIf="carr==''; then ifBlock else elseBlock"></h1>
+      <ng-template #ifBlock>
+        <p>cookieService : Not Set</p>
+      </ng-template>
+      <ng-template #elseBlock>
+        <p>cookieService : {{carr | json}}</p>
+        <p>Local Storage : {{carr | json}}</p>
+      </ng-template>
+<br>
+<h1>Angular Directives</h1>
+<br>
+<h1 appRedEl>{{"test"}}</h1>
+<p appRedEl>Hello world 1</p>
+<p appRedEl>Hello world 2</p>
+<br>
+<h1>class-12-02-2022(Angular services)</h1>
+<br>
+<ul >
+  <li *ngFor="let data of memberData">{{data.name}}</li>
+</ul>
