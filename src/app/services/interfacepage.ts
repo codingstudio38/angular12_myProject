@@ -3,4 +3,4 @@ export interface dataType {
     id: number,
     indian: boolean,
     address: any 
-}
+} 
